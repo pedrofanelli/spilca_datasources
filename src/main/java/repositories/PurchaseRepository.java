@@ -3,7 +3,7 @@ package repositories;
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+//import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import models.Purchase;
@@ -29,6 +29,7 @@ public class PurchaseRepository {
 		
 		String sql = "SELECT * FROM purchase";
 		
+		/*
 		RowMapper<Purchase> purchaseRowMapper = (resultSet, index) -> {
 			Purchase rowObject = new Purchase();
 			rowObject.setId(resultSet.getInt("id"));
@@ -36,8 +37,12 @@ public class PurchaseRepository {
 			rowObject.setPrice(resultSet.getBigDecimal("price"));
 			return rowObject;
 		};
+		*/
 		
-		return jdbc.query(sql, purchaseRowMapper);
+		//return jdbc.query(sql, purchaseRowMapper);
+		
+		return jdbc.query(sql, new PurchaseRowMapper());
+		
 	}
 	
 }
