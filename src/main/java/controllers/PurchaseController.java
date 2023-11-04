@@ -1,5 +1,8 @@
 package controllers;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,5 +25,10 @@ public class PurchaseController {
 	@PostMapping
 	public void storePurchase(@RequestBody Purchase purchase) {
 		purchaseRepository.storePurchase(purchase);
+	}
+	
+	@GetMapping
+	public List<Purchase> getAll() {
+		return purchaseRepository.findAllPurchases();
 	}
 }
